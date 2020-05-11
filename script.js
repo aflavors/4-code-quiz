@@ -21,6 +21,9 @@ function timesUpMessage() { // Timer message when count = 0
 }
 
 // Event Listeners
+startButton.addEventListener("click", function(event) {
+    event.preventDefault();
+    setTime();
+})
 
 // Call Functions
-setTime();
