@@ -2,6 +2,24 @@
 var time = $(".time");
 var startButton = $("#startButton");
 var secondsLeft = 20;
+// Variable for Quiz Questions
+var allQuestions = [{
+    question: "What does CSS stand for?",
+    choices: ["Counteracting Style Sheets", "Cascading Style Sheets", "Computer Style Sheets"],
+    correctAnswer: 1
+}, {
+    question: "What is Bootstrap?",
+    choices: ["An open-source CSS framework", "A debugging method", "The extra leather at the top of a boot"],
+    correctAnswer: 1
+}, {
+    question: "What does HTML stand for?",
+    choices: ["HyperText Machine Language", "HyperTeach Markup Language", "HyperText Markup Language"],
+    correctAnswer: 2
+}, {
+    question: "What are short sections of code written to complete a task called?",
+    choices: ["Function", "Array", "Object"],
+    correctAnswer: 0
+}];
 
 // Define Functions
 function setTime() {
