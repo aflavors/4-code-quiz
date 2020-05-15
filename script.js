@@ -1,27 +1,30 @@
-// Define Variables
-var time = document.querySelector(".time");
-var startButton = document.querySelector("#startButton");
+// Variables
+var time = $(".time");
+var startButton = $("#startButton");
 var secondsLeft = 20;
 
 // Define Functions
-function setTime() { // Timer function
-    var timerInterval = setInterval(function(){
+function setTime() {
+    var timerInterval = setInterval
+    (function(){
         secondsLeft--;
-        time.textContent = secondsLeft + " seconds remaining in the quiz"
-
+        $(".time").text(secondsLeft + " seconds remaining in the quiz")
+        
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
             timesUpMessage();
+            //ALSO set a quizOver function to end everything
+            //OR just add on to the timesUpMessage function
         }
     }, 1000);
 }
 
-function timesUpMessage() { // Timer message when count = 0
-    time.textContent = "Time's up!";
+function timesUpMessage() {
+    $(".time").text("Time's up!");
 }
 
 // Event Listeners
-startButton.addEventListener("click", function(event) {
+$("#startButton").click(function(){
     event.preventDefault();
     setTime();
 })
