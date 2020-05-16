@@ -57,11 +57,11 @@ function runNextQuestion() { // Next Question Button
     
     if(questionCount < allQuestions.length) {
         runQuiz();
-        
         displayScore();
     } else {
         $("#quiz-content").hide();
         $("#submit-initials").show();
+        $("#final-score").text("Your final score is " + quizScore + "!");
     }
 }
 
