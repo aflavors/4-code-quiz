@@ -134,4 +134,9 @@ $("#next-button").click(function(event){ // Next Question Button
     
 })
 
-// Call Functions
+// Variables for storing scores
+var initialsInput = $("#initials-text");
+var scoreList = $("#score-list");
+var scoreCountSpan = $("#score-count");
+
+var submittedScores = [];
