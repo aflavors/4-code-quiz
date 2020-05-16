@@ -11,7 +11,7 @@ var allQuestions = [{
 }, {
     question: "What is Bootstrap?",
     choices: ["An open-source CSS framework", "A debugging method", "The extra leather at the top of a boot"],
-    correctAnswer: 1
+    correctAnswer: 0
 }, {
     question: "What does HTML stand for?",
     choices: ["HyperText Machine Language", "HyperTech Markup Language", "HyperText Markup Language"],
@@ -28,45 +28,71 @@ var quizScore = 0;
 // Question Functions
 function setQuestion(questionNumber) { // Display Questions
     var questionHeaderEl = $("#question-header");
-    questionHeaderEl.text(allQuestions[questionNumber].question);
+    console.log("index we're trying to access", questionNumber)
+    //console.log(allQuestions);
+    //if(questionNumber < allQuestions.length) {
+        questionHeaderEl.text(allQuestions[questionNumber].question); //looking for allQuestions[4] -> which doesn't exist
+    //}
+    
 }
 function setAnswer(idEl, questionNumber, choiceNum) { // Display Answer Choices
     var answerChoice = document.getElementById(idEl);
-    answerChoice.innerHTML = allQuestions[questionNumber].choices[choiceNum];
+    //if(questionNumber < allQuestions.length) {
+        answerChoice.innerHTML = allQuestions[questionNumber].choices[choiceNum];
+    //}
 }
 function runQuiz() { // Run All Questions and Choices
-    setQuestion(questionCount);
-    setAnswer("answer1", questionCount, 0);
-    setAnswer("answer2", questionCount, 1);
-    setAnswer("answer3", questionCount, 2);
-    $("#next-button").text("Next Question");
+    
+        console.log('running runQuiz')
+        setQuestion(questionCount);
+        setAnswer("answer1", questionCount, 0);
+        setAnswer("answer2", questionCount, 1);
+        setAnswer("answer3", questionCount, 2);
+        $("#next-button").text("Next Question");
+   
 }
 function runNextQuestion() { // Next Question Button
-    questionCount++; // Increase Question Count
-    runQuiz();
     getScore();
-    displayScore();
+    questionCount++; // Increase Question Count
+    
+    if(questionCount < allQuestions.length) {
+        runQuiz();
+        
+        displayScore();
+} else {
+    //what happens at the end
+}
 }
 
 // Score Functions
 function getScore() { // Get Score from Correct Answer
     var theCorrectAnswer = allQuestions[questionCount].correctAnswer;
+    console.log('correct answer index', theCorrectAnswer)
     var selectedAnswer = document.getElementById("choice" + (theCorrectAnswer + 1));
-    
+//console.log ('correct answer element', selectedAnswer)
+    console.log(selectedAnswer)
     if (selectedAnswer.checked) {
         quizScore++;
         secondsLeft = secondsLeft+5; // Adds 5 seconds to counter
-        console.log("getScore worked");
+        //console.log("getScore worked", quizScore);
         alert("Your score is now " + quizScore);
+       
     }
     else {
-        runNextQuestion;
+        console.log("this is the wrong answer")
+        
     }
+     document.getElementById('choice1').checked=false;
+        document.getElementById('choice2').checked=false;
+        document.getElementById('choice3').checked=false;
 }
 
-function displayScore () { // Display Score
-    if (questionCount >= allQuestions.length) {
+function displayScore () { // Display Score 
+    if (questionCount >= allQuestions.length) { // After Last Question
         $("#quiz-content").html = "Your score is " + quizScore;
+    }
+    if(questionCount < allQuestions.length) {
+        //then run this code to end quiz
     }
 }
 
@@ -100,9 +126,12 @@ $("#startButton").click(function(){
     //console.log("hello")
 })
 
-$("#next-button").click(function(){ // Next Question Button
+$("#next-button").click(function(event){ // Next Question Button
     event.preventDefault();
-    runNextQuestion();
+    if(questionCount < allQuestions.length) {
+        runNextQuestion();
+    }
+    
 })
 
 // Call Functions
