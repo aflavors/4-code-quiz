@@ -2,6 +2,7 @@
 var time = $(".time");
 var startButton = $("#startButton");
 var secondsLeft = 20;
+
 // Variable for Quiz Questions
 var allQuestions = [{
     question: "What does CSS stand for?",
@@ -24,7 +25,13 @@ var allQuestions = [{
 var questionCount = 0;
 var quizScore = 0;
 
-// Define Functions
+// Question Functions
+function setQuestion(questionNumber) {
+    var questionHeaderEl = $("#question-header");
+    questionHeaderEl.html = allQuestions[questionNumber].question;
+}
+
+// Timer Functions
 function setTime() {
     var timerInterval = setInterval
     (function(){
