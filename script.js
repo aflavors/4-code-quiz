@@ -14,7 +14,7 @@ var allQuestions = [{
     correctAnswer: 1
 }, {
     question: "What does HTML stand for?",
-    choices: ["HyperText Machine Language", "HyperTeach Markup Language", "HyperText Markup Language"],
+    choices: ["HyperText Machine Language", "HyperTech Markup Language", "HyperText Markup Language"],
     correctAnswer: 2
 }, {
     question: "What are short sections of code written to complete a task called?",
@@ -26,9 +26,13 @@ var questionCount = 0;
 var quizScore = 0;
 
 // Question Functions
-function setQuestion(questionNumber) {
+function setQuestion(questionNumber) { // Display Questions
     var questionHeaderEl = $("#question-header");
     questionHeaderEl.html = allQuestions[questionNumber].question;
+}
+function runQuiz() {
+    setQuestion(questionCount);
+    //Insert answer choices here also
 }
 
 // Timer Functions
