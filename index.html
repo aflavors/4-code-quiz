@@ -20,12 +20,24 @@
                     <p class="time"></p>
                 </div> 
             </nav>
-    </nav> 
+    </nav>
+    <!--Quiz Welcome/Start Screen-->
     <div class="jumbotron">
         <h1 class="display-4">Hello!</h1>
-        <p class="lead">Welcome to our JavaScript coding quiz.</p>
+        <p class="lead">Welcome to our coding quiz.</p>
         <hr class="my-4">
         <a class="btn btn-primary btn-lg" href="#" role="button" id="startButton">Click to start!</a>
+      </div>
+      <!--Quiz Content-->
+      <div class="jumbotron"> 
+        <h1 class="display-4" id="question-number"></h1>
+        <p class="lead" id="question-header"></p>
+        <br>
+        <button type="button" class="btn btn-secondary btn-lg btn-block"></button>
+        <button type="button" class="btn btn-secondary btn-lg btn-block"></button>
+        <button type="button" class="btn btn-secondary btn-lg btn-block"></button>
+        <br>
+        <button type="button" class="btn btn-primary" id="next-button"></button>
       </div>
     <!-- Link to the jQuery Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
