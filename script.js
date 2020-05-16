@@ -21,6 +21,9 @@ var allQuestions = [{
     correctAnswer: 0
 }];
 
+var questionCount = 0;
+var quizScore = 0;
+
 // Define Functions
 function setTime() {
     var timerInterval = setInterval
