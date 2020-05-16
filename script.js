@@ -28,9 +28,9 @@ var quizScore = 0;
 // Question Functions
 function setQuestion(questionNumber) { // Display Questions
     var questionHeaderEl = $("#question-header");
-    questionHeaderEl.html = allQuestions[questionNumber].question;
+    questionHeaderEl.text(allQuestions[questionNumber].question);
 }
-function runQuiz() {
+function runQuiz() { // Run All Questions and Choices
     setQuestion(questionCount);
     //Insert answer choices here also
 }
@@ -59,6 +59,8 @@ function timesUpMessage() {
 $("#startButton").click(function(){
     event.preventDefault();
     setTime();
+    runQuiz();
+    console.log("hello")
 })
 
 // Call Functions
