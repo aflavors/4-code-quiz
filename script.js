@@ -59,9 +59,10 @@ function runNextQuestion() { // Next Question Button
         runQuiz();
         
         displayScore();
-} else {
-    //what happens at the end
-}
+    } else {
+        $("#quiz-content").hide();
+        $("#submit-initials").show();
+    }
 }
 
 // Score Functions
@@ -74,14 +75,14 @@ function getScore() { // Get Score from Correct Answer
     if (selectedAnswer.checked) {
         quizScore++;
         secondsLeft = secondsLeft+20; // Adds 20 seconds to counter
-        alert("Your score is now " + quizScore);
+        alert("Correct! Your score is now " + quizScore);
        
     }
     else {
         console.log("this is the wrong answer")
         secondsLeft = secondsLeft-10; // Subtracts 10 seconds from counter
     }
-     document.getElementById('choice1').checked=false;
+        document.getElementById('choice1').checked=false; //Clear input between questions
         document.getElementById('choice2').checked=false;
         document.getElementById('choice3').checked=false;
 }
