@@ -30,8 +30,16 @@ function setQuestion(questionNumber) { // Display Questions
     var questionHeaderEl = $("#question-header");
     questionHeaderEl.text(allQuestions[questionNumber].question);
 }
+function setAnswer(idEl, questionNumber, choiceNum) { // Display Answer Choices
+    var answerChoice = document.getElementById(idEl);
+    answerChoice.innerHTML = allQuestions[questionNumber].choices[choiceNum];
+}
+
 function runQuiz() { // Run All Questions and Choices
     setQuestion(questionCount);
+    setAnswer("answer1", questionCount, 0);
+    setAnswer("answer2", questionCount, 1);
+    setAnswer("answer3", questionCount, 2);
     //Insert answer choices here also
 }
 
