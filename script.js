@@ -44,6 +44,7 @@ function runQuiz() { // Run All Questions and Choices
 }
 function runNextQuestion() { // Next Question Button
     questionCount++;
+    runQuiz();
 }
 
 // Timer Functions
@@ -75,6 +76,7 @@ $("#startButton").click(function(){
 })
 
 $("#next-button").click(function(){ // Next Question Button
+    event.preventDefault();
     runNextQuestion();
 })
 
