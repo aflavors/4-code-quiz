@@ -52,8 +52,10 @@ function runNextQuestion() { // Next Question Button
 function getScore() { // Get Score from Correct Answer
     var theCorrectAnswer = allQuestions[questionCount].correctAnswer;
     var selectedAnswer = document.getElementById("choice" + (theCorrectAnswer + 1));
+    
     if (selectedAnswer.checked) {
         quizScore++;
+        secondsLeft = secondsLeft+5; // Adds 5 seconds to counter
         console.log("getScore worked");
         alert("Your score is now " + quizScore);
     }
@@ -64,8 +66,7 @@ function getScore() { // Get Score from Correct Answer
 
 function displayScore () { // Display Score
     if (questionCount >= allQuestions.length) {
-        //$("#quiz-content").html = "Your score is " + quizScore;
-        $(".time").text("Your score is " + quizScore);
+        $("#quiz-content").html = "Your score is " + quizScore;
     }
 }
 
