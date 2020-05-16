@@ -1,7 +1,7 @@
 // Variables
 var time = $(".time");
 var startButton = $("#startButton");
-var secondsLeft = 20;
+var secondsLeft = 60;
 
 // Variable for Quiz Questions
 var allQuestions = [{
@@ -73,7 +73,7 @@ function getScore() { // Get Score from Correct Answer
     console.log(selectedAnswer)
     if (selectedAnswer.checked) {
         quizScore++;
-        secondsLeft = secondsLeft+5; // Adds 5 seconds to counter
+        secondsLeft = secondsLeft+20; // Adds 20 seconds to counter
         //console.log("getScore worked", quizScore);
         alert("Your score is now " + quizScore);
        
