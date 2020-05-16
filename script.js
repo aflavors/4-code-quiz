@@ -49,7 +49,6 @@ function runQuiz() { // Run All Questions and Choices
         setAnswer("answer2", questionCount, 1);
         setAnswer("answer3", questionCount, 2);
         $("#next-button").text("Next Question");
-   
 }
 function runNextQuestion() { // Next Question Button
     getScore();
@@ -58,7 +57,7 @@ function runNextQuestion() { // Next Question Button
     if(questionCount < allQuestions.length) {
         runQuiz();
         displayScore();
-    } else {
+    } else { // After Last Question
         $("#quiz-content").hide();
         $("#submit-initials").show();
         $("#final-score").text("Your final score is " + quizScore + "!");
@@ -106,8 +105,9 @@ function setTime() {
         if(secondsLeft === 0) {
             clearInterval(timerInterval);
             timesUpMessage();
-            //ALSO set a quizOver function to end everything
-            //OR just add on to the timesUpMessage function
+            $("#quiz-content").hide();
+            $("#submit-initials").show();
+            $("#final-score").text("Your final score is " + quizScore + "!");
         }
     }, 1000);
 }
