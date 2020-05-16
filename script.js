@@ -18,7 +18,7 @@ var allQuestions = [{
     correctAnswer: 2
 }, {
     question: "What are short sections of code written to complete a task called?",
-    choices: ["Function", "Array", "Object"],
+    choices: ["Functions", "Arrays", "Objects"],
     correctAnswer: 0
 }];
 
@@ -44,6 +44,29 @@ function runQuiz() { // Run All Questions and Choices
 function runNextQuestion() { // Next Question Button
     questionCount++; // Increase Question Count
     runQuiz();
+    getScore();
+    displayScore();
+}
+
+// Score Functions
+function getScore() { // Get Score from Correct Answer
+    var theCorrectAnswer = allQuestions[questionCount].correctAnswer;
+    var selectedAnswer = document.getElementById("choice" + (theCorrectAnswer + 1));
+    if (selectedAnswer.checked) {
+        quizScore++;
+        console.log("getScore worked");
+        alert("Your score is now " + quizScore);
+    }
+    else {
+        runNextQuestion;
+    }
+}
+
+function displayScore () { // Display Score
+    if (questionCount >= allQuestions.length) {
+        //$("#quiz-content").html = "Your score is " + quizScore;
+        $(".time").text("Your score is " + quizScore);
+    }
 }
 
 // Timer Functions
@@ -70,6 +93,7 @@ function timesUpMessage() {
 $("#startButton").click(function(){ 
     event.preventDefault();
     $("#welcome-screen").hide(); // Hide Welcome Screen
+    $("#quiz-content").show(); // Show Quiz Content
     setTime();
     runQuiz();
     //console.log("hello")
