@@ -40,7 +40,9 @@ function runQuiz() { // Run All Questions and Choices
     setAnswer("answer1", questionCount, 0);
     setAnswer("answer2", questionCount, 1);
     setAnswer("answer3", questionCount, 2);
-    //Insert answer choices here also
+}
+function runNextQuestion() { // Next Question Button
+    questionCount++;
 }
 
 // Timer Functions
@@ -68,7 +70,7 @@ $("#startButton").click(function(){
     event.preventDefault();
     setTime();
     runQuiz();
-    console.log("hello")
+    //console.log("hello")
 })
 
 // Call Functions
