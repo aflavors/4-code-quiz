@@ -40,6 +40,7 @@ function runQuiz() { // Run All Questions and Choices
     setAnswer("answer1", questionCount, 0);
     setAnswer("answer2", questionCount, 1);
     setAnswer("answer3", questionCount, 2);
+    $("#next-button").text("Next Question");
 }
 function runNextQuestion() { // Next Question Button
     questionCount++;
@@ -66,11 +67,15 @@ function timesUpMessage() {
 }
 
 // Event Listeners
-$("#startButton").click(function(){
+$("#startButton").click(function(){ 
     event.preventDefault();
     setTime();
     runQuiz();
     //console.log("hello")
+})
+
+$("#next-button").click(function(){ // Next Question Button
+    runNextQuestion();
 })
 
 // Call Functions
