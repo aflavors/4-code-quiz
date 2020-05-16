@@ -34,7 +34,6 @@ function setAnswer(idEl, questionNumber, choiceNum) { // Display Answer Choices
     var answerChoice = document.getElementById(idEl);
     answerChoice.innerHTML = allQuestions[questionNumber].choices[choiceNum];
 }
-
 function runQuiz() { // Run All Questions and Choices
     setQuestion(questionCount);
     setAnswer("answer1", questionCount, 0);
@@ -43,7 +42,7 @@ function runQuiz() { // Run All Questions and Choices
     $("#next-button").text("Next Question");
 }
 function runNextQuestion() { // Next Question Button
-    questionCount++;
+    questionCount++; // Increase Question Count
     runQuiz();
 }
 
@@ -70,6 +69,7 @@ function timesUpMessage() {
 // Event Listeners
 $("#startButton").click(function(){ 
     event.preventDefault();
+    $("#welcome-screen").hide(); // Hide Welcome Screen
     setTime();
     runQuiz();
     //console.log("hello")
