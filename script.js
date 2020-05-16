@@ -79,7 +79,7 @@ function getScore() { // Get Score from Correct Answer
     }
     else {
         console.log("this is the wrong answer")
-        secondsLeft = secondsLeft-10; // Subtracts 20 seconds from counter
+        secondsLeft = secondsLeft-10; // Subtracts 10 seconds from counter
     }
      document.getElementById('choice1').checked=false;
         document.getElementById('choice2').checked=false;
