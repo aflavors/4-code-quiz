@@ -74,13 +74,12 @@ function getScore() { // Get Score from Correct Answer
     if (selectedAnswer.checked) {
         quizScore++;
         secondsLeft = secondsLeft+20; // Adds 20 seconds to counter
-        //console.log("getScore worked", quizScore);
         alert("Your score is now " + quizScore);
        
     }
     else {
         console.log("this is the wrong answer")
-        
+        secondsLeft = secondsLeft-10; // Subtracts 20 seconds from counter
     }
      document.getElementById('choice1').checked=false;
         document.getElementById('choice2').checked=false;
