@@ -15,7 +15,8 @@ Instructions:
 1. The user clicks the button to start the quiz.
 2. The user will be presented with a series of questions related to coding.
 3. If the user answers correctly time will be added to the quiz timer. If they answer incorrectly time will be subtracted from the timer.
-4. 
+4. When all questions are answered or the timer reaches 0 the game will end and a score will be presented.
+5. The user will also be presented with the option to save their initials and score.
 
 CSS
 - The CSS is linked using an external style sheet and utilizes Bootstrap.
