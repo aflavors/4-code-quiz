@@ -10,63 +10,66 @@
     <title>Code Quiz</title>
 </head>
 <body>
-    <nav class="row">
-        <nav class="col-sm-8 col-lg-9 navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Code Quiz</a>
-        </nav>
-            <nav class="col-sm-4 col-lg-3 navbar navbar-expand-lg navbar-light bg-light">
-                <div class="navbar-nav">
-                    <!--setInterval here-->
-                    <p class="time"></p>
-                </div> 
+    <div class="container-fluid">
+        <nav class="row">
+            <nav class="col-sm-8 col-lg-9 navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">Code Quiz</a>
             </nav>
-    </nav>
-    <!--Quiz Welcome/Start Screen-->
-    <div class="jumbotron" id="welcome-screen">
-        <h1 class="display-4">Hello!</h1>
-        <p class="lead">Welcome to our coding quiz.</p>
-        <hr class="my-4">
-        <a class="btn btn-primary btn-lg" href="#" role="button" id="startButton">Click to start!</a>
+                <nav class="col-sm-4 col-lg-3 navbar navbar-expand-lg navbar-light bg-light">
+                    <div class="navbar-nav">
+                        <!--setInterval here-->
+                        <p class="time"></p>
+                    </div> 
+                </nav>
+        </nav>
+        <!--Quiz Welcome/Start Screen-->
+        <div class="jumbotron" id="welcome-screen">
+            <h1 class="display-4">Hello!</h1>
+            <p class="lead">Welcome to our coding quiz.</p>
+            <hr class="my-4">
+            <a class="btn btn-primary btn-lg" href="#" role="button" id="startButton">Click to start!</a>
+        </div>
+        <!--Quiz Content-->
+        <div class="jumbotron" id="quiz-content"> 
+            <h1 class="display-4" id="question-number"></h1>
+            <p class="lead" id="question-header"></p>
+            <br>
+            <input type="radio" name="choice" value="0" id="choice1">
+            <label class="form-check-label" id="answer1"></label>
+            <br>
+            <input type="radio" name="choice" value="1" id="choice2">
+            <label class="form-check-label" id="answer2"></label>
+            <br>
+            <input type="radio" name="choice" value="2" id="choice3">
+            <label class="form-check-label" id="answer3"></label>
+            <br><br>
+            <button type="button" class="btn btn-primary btn-sm" id="next-button"></button>
+        </div>
+        <!--Score Content-->
+        <div class="jumbotron" id="submit-initials">
+            <h1 class="display-4">Done</h1>
+            <p class="lead" id="final-score"></p>
+            <hr class="my-4">
+                <form method="POST">
+                    <div class="form">
+                    <label class="col-form-label" for="enterInitialsForScore">Enter Initials</label>
+                    <input type="initials" class="form-control" id="initials-text" placeholder="Enter intials">
+                    <small id="input-instructions" class="form-text text-muted">Submit initials to save your score.</small>
+                    </div>
+                    <div id="msg"></div>
+                    <br>
+                    <a class="btn btn-primary btn-sm" href="#" role="button" id="submit-button">Submit</a>
+                </form>
+            
+            <br>
+            <hr class="my-4">
+            <p>Submitted Scores: <span id="score-count">0</span></p>
+        <ul id="score-list"></ul>
+        </div>
     </div>
-      <!--Quiz Content-->
-    <div class="jumbotron" id="quiz-content"> 
-        <h1 class="display-4" id="question-number"></h1>
-        <p class="lead" id="question-header"></p>
-        <br>
-        <input type="radio" name="choice" value="0" id="choice1">
-        <label class="form-check-label" id="answer1"></label>
-        <br>
-        <input type="radio" name="choice" value="1" id="choice2">
-        <label class="form-check-label" id="answer2"></label>
-        <br>
-        <input type="radio" name="choice" value="2" id="choice3">
-        <label class="form-check-label" id="answer3"></label>
-        <br><br>
-        <button type="button" class="btn btn-primary btn-sm" id="next-button"></button>
-    </div>
-      <!--Score Content-->
-    <div class="jumbotron" id="submit-initials">
-        <h1 class="display-4">Done</h1>
-        <p class="lead" id="final-score"></p>
-        <hr class="my-4">
-            <form method="POST">
-                <div class="form">
-                <label class="col-form-label" for="enterInitialsForScore">Enter Initials</label>
-                <input type="initials" class="form-control" id="initials-text" placeholder="Enter intials">
-                <small id="input-instructions" class="form-text text-muted">Submit initials to save your score.</small>
-                </div>
-                <br>
-                <a class="btn btn-primary btn-sm" href="#" role="button" id="submit-button">Submit</a>
-            </form>
-         
-         <br>
-         <hr class="my-4">
-         <p>Submitted Scores: <span id="score-count">0</span></p>
-      <ul id="score-list"></ul>
-    </div>
-    <!-- Link to the jQuery Library -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--External JS-->
-    <script src="./script.js"></script>
+<!-- Link to the jQuery Library -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!--External JS-->
+<script src="./script.js"></script>
 </body>
 </html>
