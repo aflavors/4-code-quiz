@@ -2,7 +2,8 @@
 var time = $(".time");
 var startButton = $("#startButton");
 var secondsLeft = 60;
-
+var questionCount = 0;
+var quizScore = 0;
 // Variable for Quiz Questions
 var allQuestions = [{
     question: "What does CSS stand for?",
@@ -21,28 +22,16 @@ var allQuestions = [{
     choices: ["Functions", "Arrays", "Objects"],
     correctAnswer: 0
 }];
-
-var questionCount = 0;
-var quizScore = 0;
-
 // Question Functions
 function setQuestion(questionNumber) { // Display Questions
     var questionHeaderEl = $("#question-header");
-    console.log("index we're trying to access", questionNumber)
-    //console.log(allQuestions);
-    //if(questionNumber < allQuestions.length) {
-        questionHeaderEl.text(allQuestions[questionNumber].question); //looking for allQuestions[4] -> which doesn't exist
-    //}
-    
+        questionHeaderEl.text(allQuestions[questionNumber].question);
 }
 function setAnswer(idEl, questionNumber, choiceNum) { // Display Answer Choices
     var answerChoice = document.getElementById(idEl);
-    //if(questionNumber < allQuestions.length) {
         answerChoice.innerHTML = allQuestions[questionNumber].choices[choiceNum];
-    //}
 }
 function runQuiz() { // Run All Questions and Choices
-    
         console.log('running runQuiz')
         setQuestion(questionCount);
         setAnswer("answer1", questionCount, 0);
@@ -63,38 +52,28 @@ function runNextQuestion() { // Next Question Button
         $("#final-score").text("Your final score is " + quizScore + "!");
     }
 }
-
 // Score Functions
 function getScore() { // Get Score from Correct Answer
     var theCorrectAnswer = allQuestions[questionCount].correctAnswer;
-    console.log('correct answer index', theCorrectAnswer)
     var selectedAnswer = document.getElementById("choice" + (theCorrectAnswer + 1));
-//console.log ('correct answer element', selectedAnswer)
-    console.log(selectedAnswer)
+   
     if (selectedAnswer.checked) {
         quizScore++;
         secondsLeft = secondsLeft+20; // Adds 20 seconds to counter
         alert("Correct! Your score is now " + quizScore);
-       
     }
     else {
-        console.log("this is the wrong answer")
         secondsLeft = secondsLeft-10; // Subtracts 10 seconds from counter
     }
         document.getElementById('choice1').checked=false; //Clear input between questions
         document.getElementById('choice2').checked=false;
         document.getElementById('choice3').checked=false;
 }
-
 function displayScore () { // Display Score 
     if (questionCount >= allQuestions.length) { // After Last Question
         $("#quiz-content").html = "Your score is " + quizScore;
     }
-    if(questionCount < allQuestions.length) {
-        //then run this code to end quiz
-    }
 }
-
 // Timer Functions
 function setTime() {
     var timerInterval = setInterval
@@ -111,11 +90,9 @@ function setTime() {
         }
     }, 1000);
 }
-
 function timesUpMessage() {
     $(".time").text("Time's up!");
 }
-
 // Event Listeners
 $("#startButton").click(function(){ 
     event.preventDefault();
@@ -123,20 +100,47 @@ $("#startButton").click(function(){
     $("#quiz-content").show(); // Show Quiz Content
     setTime();
     runQuiz();
-    //console.log("hello")
 })
-
-$("#next-button").click(function(event){ // Next Question Button
+// Next Question Button
+$("#next-button").click(function(event){ 
     event.preventDefault();
     if(questionCount < allQuestions.length) {
         runNextQuestion();
-    }
-    
+    }   
 })
-
-// Variables for storing scores
+//Variables for submitting initials
+var submitInitialsButton = $("#submit-button")
 var initialsInput = $("#initials-text");
 var scoreList = $("#score-list");
-var scoreCountSpan = $("#score-count");
+var msgDiv = $("#msg");
 
-var submittedScores = [];
+function displayMessage(message) {
+    msgDiv.textContent = message;
+}
+
+$("#submit-button").click(function(event){
+    event.preventDefault;
+
+    var userScore = {
+        initials: initialsInput,
+        score: quizScore
+    };
+
+    console.log(userScore);
+    console.log(userScore.initials);
+
+    if (userScore.initials === "") {
+        displayMessage("error", "Initials cannot be blank");
+        console.log("submitted");
+    } else {
+        displayMessage("success", "Initials submitted");
+
+        // Set Submission
+        localStorage.setItem("userScore", JSON.stringify(userScore));
+
+        //Get Submission
+        var lastUser = JSON.parse(localStorage.getItem("userScore"));
+        scoreList.textContent = lastUser.initials;
+        console.log(lastUser.initials);
+    }
+})
