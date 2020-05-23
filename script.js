@@ -109,38 +109,27 @@ $("#next-button").click(function(event){
     }   
 })
 //Variables for submitting initials
-var submitInitialsButton = $("#submit-button")
+var submitInitialsButton = $("#submit-button");
 var initialsInput = $("#initials-text");
 var scoreList = $("#score-list");
-var msgDiv = $("#msg");
+var submittedScoreCount = 0;
 
-function displayMessage(message) {
-    msgDiv.textContent = message;
+//Submit Initials Button
+submitInitialsButton.on("click", function(event){
+    event.preventDefault();
+
+    $("#score-count").text(submittedScoreCount);
+    var userInitials = $("#initials-text").val();
+    localStorage.setItem("userInitials", userInitials);
+    submittedScoreCount++;
+    
+    renderUserInitials();
+})
+
+//Render Submitted Initials
+function renderUserInitials() {
+    var userInitials = localStorage.getItem("userInitials");
+    $("#score-list").text(userInitials + ":" + quizScore);
 }
 
-$("#submit-button").click(function(event){
-    event.preventDefault;
-
-    var userScore = {
-        initials: initialsInput,
-        score: quizScore
-    };
-
-    console.log(userScore);
-    console.log(userScore.initials);
-
-    if (userScore.initials === "") {
-        displayMessage("error", "Initials cannot be blank");
-        console.log("submitted");
-    } else {
-        displayMessage("success", "Initials submitted");
-
-        // Set Submission
-        localStorage.setItem("userScore", JSON.stringify(userScore));
-
-        //Get Submission
-        var lastUser = JSON.parse(localStorage.getItem("userScore"));
-        scoreList.textContent = lastUser.initials;
-        console.log(lastUser.initials);
-    }
-})
+renderUserInitials();
